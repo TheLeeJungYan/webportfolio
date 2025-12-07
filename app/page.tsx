@@ -40,7 +40,7 @@ import {
 } from "react-icons/si";
 import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri";
 import { TbSql } from "react-icons/tb";
-
+import { TiLocation } from "react-icons/ti";
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items relative">
@@ -75,7 +75,7 @@ export default function Home() {
               </div>
             </span>
           </div>
-          <h1 className="relative mt-5 w-fit text-transparent bg-clip-text text-7xl font-medium font-sans bg-linear-to-br from-neutral-50 to-neutral-500">
+          <h1 className="relative mt-5 w-fit text-transparent bg-clip-text text-7xl font-medium font-sans bg-linear-to-br from-white to-white   ">
             Lee Jung Yan
           </h1>
 
@@ -90,13 +90,10 @@ export default function Home() {
             <span className="text-emerald-50 italic"> reliable </span>{" "}
             enterprise solutions .
           </h4>
-          <div className="flex text-neutral-400 mt-4 items-center gap-2 font-sans text-sm">
-            <HugeiconsIcon
-              icon={PinLocation01Icon}
-              size={16}
-              color="currentColor"
-              strokeWidth={1.5}
-            />
+          <div className="flex text-neutral-400 mt-4 items-center gap-1.5 font-sans text-sm">
+            <span className="text-rose-400">
+              <TiLocation size={16} color="currentColor" strokeWidth={1.5} />
+            </span>
             <span>Ipoh , Perak</span>
           </div>
           <div className="flex gap-x-3 mt-4 font-inter text-sm *:flex *:gap-2 *:items-center *:px-4 *:py-2 *:rounded-xl  *:bg-neutral-800 *:hover:bg-neutral-800/80 *:transition-all *:border *:border-neutral-700/30 *:text-neutral-200">
@@ -159,66 +156,94 @@ export default function Home() {
           <span className="text-white uppercase font-normal font-mono text-sm">
             experiences
           </span>
-          <div className="flex flex-col mt-4 gap-4">
+          <div className="flex flex-col mt-2 gap-2">
             <div className="flex flex-col">
-              <div className="flex">
-                <Image
-                  src="/yellresearch.png"
-                  alt="Yell Research Sdn Bhd"
-                  width={60}
-                  height={60}
-                  className="rounded-xl shadow-xs shadow-amber-600 object-contain bg-amber-500 border p-1"
-                />
-                <div className="flex flex-col ml-4 font-inter mt-auto">
-                  <span className="font-inter bg-clip-text text-transparent bg-linear-to-br from-neutral-50 to-neutral-600 font-bold text-2xl">
-                    Software Engineer
-                  </span>
-                  <span className="text-sm text-neutral-500">
-                    Yell Research
-                  </span>
-                </div>
-                <div className="ml-auto mt-auto flex">
-                  <span className="mt-auto text-neutral-400 font-sans text-sm">
-                    Dec 2025 - Present
-                  </span>
+              <div className="flex items-center">
+                <span className="font-inter bg-clip-text text-transparent bg-linear-to-br from-neutral-50  to-neutral-600 font-bold text-2xl">
+                  Software Engineer
+                </span>
+                <div
+                  className="bg-emerald-500/10 backdrop-blur-md border border-emerald-500/30 font-semibold text-xs font-inter px-2 py-0.5 text-emerald-500 rounded-full ml-2
+                "
+                >
+                  Current
                 </div>
               </div>
+
+              <div className="flex items-center text-sm">
+                <Image
+                  src="/yellresearch.png"
+                  alt="Polyware"
+                  width={16}
+                  height={16}
+                  className="rounded-md object-contain"
+                />
+                <span className="text-neutral-400 ml-2">Yell Research</span>
+                <span className="text-neutral-500 ml-auto">
+                  Dec, 2025 - Present
+                </span>
+              </div>
+              <span className="mt-2 text-xs font-inter text-white text-justify">
+                Full-stack application development in a fast-paced software
+                house environment, delivering scalable features, enhancing
+                system performance, and collaborating closely with
+                cross-functional teams to build reliable, user-focused digital
+                solutions.
+              </span>
+              <div className="flex"></div>
             </div>
+            <div className="bg-linear-to-r from-neutral-600 via-neutral-50 to-neutral-600 h-px w-1/2 my-2"></div>
             <div className="flex flex-col">
-              <div className="flex">
+              <span className="font-inter bg-clip-text text-transparent bg-linear-to-br from-neutral-50  to-neutral-600 font-bold text-2xl">
+                Software Engineer
+              </span>
+              <div className="flex items-center text-sm">
                 <Image
                   src="/polyware.png"
-                  alt="Polyware Sdn Bhd"
-                  width={60}
-                  height={60}
-                  className="rounded-xl shadow-xs shadow-white"
+                  alt="Polyware"
+                  width={16}
+                  height={16}
+                  className="rounded-md"
                 />
-                <div className="flex flex-col ml-4 font-inter mt-auto">
-                  <span className="font-inter bg-clip-text text-transparent bg-linear-to-br from-neutral-50 to-neutral-600 font-bold text-2xl">
-                    Software Engineer
-                  </span>
-                  <span className="text-sm text-neutral-500">
-                    Polyware Sdn Bhd
-                  </span>
-                </div>
-                <div className="ml-auto mt-auto flex">
-                  <span className="mt-auto text-neutral-400 font-sans text-sm">
-                    June 2023 - Dec 2025
-                  </span>
-                </div>
+                <span className="text-neutral-400 ml-2">Polyware Sdn Bhd</span>
+                <span className="text-neutral-500 ml-auto">
+                  Jun, 2023 - Dec, 2025
+                </span>
+              </div>
+              <span className="mt-2 text-xs font-inter text-white text-justify">
+                ERP application development focused on workflow automation,
+                system enhancement, and seamless cross-department operations,
+                including building new modules from scratch, improving existing
+                features, and ensuring smooth integration across internal
+                platforms.
+              </span>
+              <div className="flex text-neutral-200 gap-2 mt-2 items-center">
+                <FaPhp size={20} />
+                <FaLaravel size={16} />
+                <SiLivewire size={16} />
+                <FaHtml5 size={16} />
+                <FaCss3Alt size={16} />
+                <SiJavascript size={16} />
+                <SiJquery size={16} />
+                <RiTailwindCssFill size={16} />
+                <FaVuejs size={16} />
+                <SiInertia size={16} />
+                <FaReact size={16} />
+                <FaAws size={16} />
+                <TbSql size={20} />
               </div>
             </div>
           </div>
         </section>
 
-        <section className="flex flex-col mt-20 mb-10 w-full">
+        <section className="flex flex-col mt-20 w-full">
           <span className="text-white uppercase font-normal font-mono text-sm">
             Technologies
           </span>
           <div className="flex flex-col justify-center items-center w-full">
             <div className="mt-4 flex flex-wrap gap-2 text-white text-[10px] font-sans *:gap-2 *:flex *:flex-col *:items-center *:justify-center *:size-20 *:border *:border-white/10 *:bg-white/10 backdrop-blur-sm *:rounded-md *:cursor-pointer">
               <div className="">
-                <FaPhp size={32} className="animate-pulse" />
+                <FaPhp size={32} />
                 <span className="">PHP</span>
               </div>
               <div>
@@ -283,7 +308,7 @@ export default function Home() {
               </div>
               <div>
                 <FaPython size={32} />
-                <span>Pythton</span>
+                <span>Python</span>
               </div>
               <div>
                 <SiFastapi size={32} />
@@ -339,6 +364,12 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </section>
+
+        <section className="flex flex-col mt-20 mb-10 w-full">
+          <span className="text-white uppercase font-normal font-mono text-sm">
+            Projects
+          </span>
         </section>
       </div>
     </div>
