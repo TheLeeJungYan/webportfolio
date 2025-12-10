@@ -53,7 +53,7 @@ export default function Home() {
       <div className="fixed left-0 top-0 -z-10 h-full w-full">
         <div className="relative h-full w-full bg-black">
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[14px_24px]"></div>
-          <div className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]"></div>
+          <div className="absolute left-0 right-0 top-0 h-full w-full rounded-full bg-[radial-gradient(circle_400px_at_25%_200px,#fbfbfb36,#000)]"></div>
         </div>
       </div>
       <div className="max-w-4xl mx-auto w-full flex flex-col">
@@ -120,7 +120,7 @@ export default function Home() {
               <span>Github</span>
             </a>
             <a
-              href="www.linkedin.com/in/lee-jung-yan-619863338"
+              href="https://www.linkedin.com/in/lee-jung-yan-619863338"
               target="_blank"
             >
               <HugeiconsIcon
@@ -131,7 +131,7 @@ export default function Home() {
               />
               <span>Linkedin</span>
             </a>
-            <a href="/resume.docx" target="_blank">
+            <a href="/documents/resume.docx" target="_blank">
               <HugeiconsIcon
                 icon={File01Icon}
                 size={16}
@@ -140,7 +140,7 @@ export default function Home() {
               />
               <span>Resume</span>
             </a>
-            <a href="/cv.docx" target="_blank">
+            <a href="/documents/cv.docx" target="_blank">
               <HugeiconsIcon
                 icon={File02Icon}
                 size={16}
@@ -172,8 +172,8 @@ export default function Home() {
 
               <div className="flex items-center text-sm">
                 <Image
-                  src="/yellresearch.png"
-                  alt="Polyware"
+                  src="/companies/yellresearch.png"
+                  alt="Yell Research"
                   width={16}
                   height={16}
                   className="rounded-md object-contain"
@@ -199,7 +199,7 @@ export default function Home() {
               </span>
               <div className="flex items-center text-sm">
                 <Image
-                  src="/polyware.png"
+                  src="/companies/polyware.png"
                   alt="Polyware"
                   width={16}
                   height={16}
@@ -241,7 +241,7 @@ export default function Home() {
             Technologies
           </span>
           <div className="flex flex-col justify-center items-center w-full">
-            <div className="mt-4 flex flex-wrap gap-2 text-white text-[10px] font-sans *:gap-2 *:flex *:flex-col *:items-center *:justify-center *:size-20 *:border *:border-white/10 *:bg-white/10 backdrop-blur-sm *:rounded-md *:cursor-pointer">
+            <div className="mt-4 flex flex-wrap gap-2 text-white text-[10px] font-sans *:gap-2 *:flex *:flex-col *:items-center *:justify-center *:size-20 *:border *:border-white/15 *:bg-white/10 backdrop-blur-sm *:rounded-md *:cursor-pointer">
               <div className="">
                 <FaPhp size={32} />
                 <span className="">PHP</span>
@@ -370,6 +370,61 @@ export default function Home() {
           <span className="text-white uppercase font-normal font-mono text-sm">
             Projects
           </span>
+          <div className="flex gap-2 flex-1 mt-4">
+            <div className="flex-2 overflow-hidden flex-col rounded-xl bg-linear-to-br from-white/10 to-gray-100/10 border border-white/15 backdrop-blur-md">
+              <div className="px-4 py-4 flex flex-col relative pb-30">
+                <h3 className="text-transparent font-semibold font-inter bg-linear-to-br from-30% from-white to-white/50 bg-clip-text">
+                  MathZap
+                </h3>
+                <span className="text-xs mt-1 font-inter text-neutral-400">
+                  A simple interactive web application that lets users answer
+                  multiple-choice math questions
+                </span>
+                <div className="mt-2 flex gap-1 text-white *:rounded-full  *:px-2 *:py-0.5 *:bg-neutral-700 *:text-[10px] font-inter">
+                  <div>React</div>
+                  <div>Typescript</div>
+                  <div>Tailwind</div>
+                  <div>Vercel</div>
+                </div>
+              </div>
+              <div className="absolute -bottom-5 -right-1 -z-1">
+                <Image
+                  src="/projects/test.png"
+                  alt="Math Quiz"
+                  width={200}
+                  height={200}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+            <div className="flex-3 overflow-hidden flex-col rounded-xl bg-linear-to-br from-white/10 to-black/10 border border-white/15  backdrop-blur-md backdrop-brightness-100">
+              <div className="px-4 py-4 flex flex-col relative pb-30">
+                <h3 className="text-transparent font-semibold font-inter bg-linear-to-br from-30% from-white to-white/50 bg-clip-text">
+                  Web Portfolio
+                </h3>
+                <span className="text-xs mt-1 font-inter text-neutral-400">
+                  A personal portfolio website showcasing projects, skills, and
+                  professional experience in a clean and modern layout.
+                </span>
+                <div className="mt-2 flex gap-1 text-white *:rounded-full  *:px-2 *:py-0.5 *:bg-neutral-700 *:text-[10px] font-inter">
+                  <div>Next</div>
+                  <div>React</div>
+                  <div>Typescript</div>
+                  <div>Tailwind</div>
+                  <div>Vercel</div>
+                </div>
+                <div className="absolute -z-1 -bottom-15 left-9 shadow-xl shadow-neutral-500">
+                  <Image
+                    src="/projects/webportfolio.png"
+                    alt="Math Quiz"
+                    width={450}
+                    height={400}
+                    className="rounded-2xl border border-white/20"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>
