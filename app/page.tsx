@@ -1,7 +1,6 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import {
-  PinLocation01Icon,
   Mail01Icon,
   Github01Icon,
   Linkedin01Icon,
@@ -43,27 +42,27 @@ import { TbSql } from "react-icons/tb";
 import { TiLocation } from "react-icons/ti";
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col items relative">
-      <div className="position fixed top-0 right-20 flex flex-col items-center w-px">
-        <div className="h-40 w-px bg-neutral-500 rounded-md"></div>
-        <div className="rotate-90 text-neutral-500 font-mono mt-20 text-sm hover:text-neutral-100 transition-all cursor-pointer">
+    <div className="min-h-screen flex flex-col items relative ">
+      <div className="fixed top-0 right-20 hidden lg:flex flex-col items-center w-px group">
+        <div className="h-40 w-px bg-neutral-500 rounded-md group-hover:bg-neutral-100"></div>
+        <div className="rotate-90 text-neutral-500 font-mono mt-20 text-sm group-hover:text-neutral-100 transition-all cursor-pointer">
           jungyanlee@gmail.com
         </div>
       </div>
       <div className="fixed left-0 top-0 -z-10 h-full w-full">
         <div className="relative h-full w-full bg-black">
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[14px_24px]"></div>
-          <div className="absolute left-0 right-0 top-0 h-full w-full rounded-full bg-[radial-gradient(circle_400px_at_25%_200px,#fbfbfb36,#000)]"></div>
+          <div className="absolute left-0 right-0 top-0 h-full w-full bg-[radial-gradient(circle_400px_at_25%_200px,#fbfbfb36,#000)]"></div>
         </div>
       </div>
-      <div className="max-w-4xl mx-auto w-full flex flex-col">
-        <header className="flex justify-between mt-20 items-center font-inter">
+      <div className="max-w-4xl px-10 py-10 mx-auto w-full flex flex-col">
+        <header className="flex justify-between mt-10 items-center font-inter">
           <span className=" text-neutral-50  rounded-md size-10 flex items-center justify-center font-inter font-semibold">
             JY
           </span>
         </header>
 
-        <section className="flex flex-col mt-30">
+        <section className="flex flex-col mt-20 md:mt-30">
           <div className="flex">
             <span className="relative inline-block overflow-hidden rounded-full p-px">
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#171717_0%,#f0fdf4_50%,#171717_100%)]"></span>
@@ -75,11 +74,11 @@ export default function Home() {
               </div>
             </span>
           </div>
-          <h1 className="relative mt-5 w-fit text-transparent bg-clip-text text-7xl font-medium font-sans bg-linear-to-br from-white to-white   ">
+          <h1 className="relative mt-5 w-fit text-transparent bg-clip-text text-5xl md:text-7xl font-medium font-sans bg-linear-to-br from-white to-white   ">
             Lee Jung Yan
           </h1>
 
-          <h4 className=" mt-2 font-medium font-inter text-neutral-400">
+          <h4 className=" mt-2 font-medium font-inter text-neutral-400 md:text-normal text-sm text-justify">
             Software Engineer focused on building
             <span className="text-emerald-50 italic"> scalable</span> business
             systems ,
@@ -90,13 +89,13 @@ export default function Home() {
             <span className="text-emerald-50 italic"> reliable </span>{" "}
             enterprise solutions .
           </h4>
-          <div className="flex text-neutral-400 mt-4 items-center gap-1.5 font-sans text-sm">
+          <div className="flex text-neutral-400 mt-4 items-center gap-1.5 font-sans md:text-sm text-xs">
             <span className="text-rose-400">
               <TiLocation size={16} color="currentColor" strokeWidth={1.5} />
             </span>
             <span>Ipoh , Perak</span>
           </div>
-          <div className="flex gap-x-3 mt-4 font-inter text-sm *:flex *:gap-2 *:items-center *:px-4 *:py-2 *:rounded-xl  *:bg-neutral-800 *:hover:bg-neutral-800/80 *:transition-all *:border *:border-neutral-700/30 *:text-neutral-200">
+          <div className="flex flex-wrap gap-2 lg:gap-x-3 mt-4 font-inter text-xs md:text-sm *:flex *:gap-2 *:items-center *:px-4 *:py-2 *:rounded-xl  *:bg-neutral-800 *:hover:bg-neutral-800/80 *:transition-all *:border *:border-neutral-700/30 *:text-neutral-200">
             <a
               href="mailto:jungyanlee@gmail.com"
               target="_blank"
@@ -152,25 +151,25 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="flex flex-col mt-20">
+        <section className="flex flex-col mt-10 md:mt-20 z-10">
           <span className="text-white uppercase font-normal font-mono text-sm">
             experiences
           </span>
           <div className="flex flex-col mt-2 gap-2">
             <div className="flex flex-col">
               <div className="flex items-center">
-                <span className="font-inter bg-clip-text text-transparent bg-linear-to-br from-neutral-50  to-neutral-600 font-bold text-2xl">
+                <span className="font-inter bg-clip-text text-transparent bg-linear-to-br from-neutral-50  to-neutral-600 font-bold text-lg md:text-2xl">
                   Software Engineer
                 </span>
                 <div
-                  className="bg-emerald-500/10 backdrop-blur-md border border-emerald-500/30 font-semibold text-xs font-inter px-2 py-0.5 text-emerald-500 rounded-full ml-2
+                  className="bg-emerald-500/10  border border-emerald-500/30 font-semibold text-xs font-inter px-2 py-0.5 text-emerald-500 rounded-full ml-2
                 "
                 >
                   Current
                 </div>
               </div>
 
-              <div className="flex items-center text-sm">
+              <div className="flex items-center text-xs md:text-sm">
                 <Image
                   src="/companies/yellresearch.png"
                   alt="Yell Research"
@@ -183,7 +182,7 @@ export default function Home() {
                   Dec, 2025 - Present
                 </span>
               </div>
-              <span className="mt-2 text-xs font-inter text-white text-justify">
+              <span className="mt-2 text-[11px] md:text-xs font-inter text-white text-justify">
                 Full-stack application development in a fast-paced software
                 house environment, delivering scalable features, enhancing
                 system performance, and collaborating closely with
@@ -194,10 +193,10 @@ export default function Home() {
             </div>
             <div className="bg-linear-to-r from-neutral-600 via-neutral-50 to-neutral-600 h-px w-1/2 my-2"></div>
             <div className="flex flex-col">
-              <span className="font-inter bg-clip-text text-transparent bg-linear-to-br from-neutral-50  to-neutral-600 font-bold text-2xl">
+              <span className="font-inter bg-clip-text text-transparent bg-linear-to-br from-neutral-50  to-neutral-600 font-bold text-lg md:text-2xl">
                 Software Engineer
               </span>
-              <div className="flex items-center text-sm">
+              <div className="flex items-center text-xs md:text-sm">
                 <Image
                   src="/companies/polyware.png"
                   alt="Polyware"
@@ -210,7 +209,7 @@ export default function Home() {
                   Jun, 2023 - Dec, 2025
                 </span>
               </div>
-              <span className="mt-2 text-xs font-inter text-white text-justify">
+              <span className="mt-2 text-[11px] md:text-xs  font-inter text-white text-justify">
                 ERP application development focused on workflow automation,
                 system enhancement, and seamless cross-department operations,
                 including building new modules from scratch, improving existing
@@ -236,142 +235,155 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="flex flex-col mt-20 w-full">
+        <section className="flex flex-col mt-10 md:mt-20 w-full z-10">
           <span className="text-white uppercase font-normal font-mono text-sm">
             Technologies
           </span>
-          <div className="flex flex-col justify-center items-center w-full">
-            <div className="mt-4 flex flex-wrap gap-2 text-white text-[10px] font-sans *:gap-2 *:flex *:flex-col *:items-center *:justify-center *:size-20 *:border *:border-white/15 *:bg-white/10 backdrop-blur-sm *:rounded-md *:cursor-pointer">
-              <div className="">
-                <FaPhp size={32} />
+          <div className="flex flex-col justify-center items-center w-full ">
+            <div
+              className="w-full mt-4 grid grid-cols-[repeat(auto-fill,minmax(50px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(80px,1fr))] gap-2
+                    text-white text-[8px] sm:text-[10px] font-sans
+                    *:gap-2 *:flex *:flex-col *:items-center *:justify-center
+                    *:sm:border *:sm:border-white/5 *:sm:bg-white/5 *:sm:backdrop-blur-sm
+                    *:rounded-md *:cursor-pointer
+                    *:w-full *:sm:min-h-[90px]"
+            >
+              <div>
+                <FaPhp className="text-[28px] sm:text-[32px]" />
                 <span className="">PHP</span>
               </div>
               <div>
-                <FaLaravel size={32} />
+                <FaLaravel className="text-[28px] sm:text-[32px]" />
                 <span>Laravel</span>
               </div>
               <div>
-                <FaHtml5 size={32} />
+                <FaHtml5 className="text-[28px] sm:text-[32px]" />
                 <span>HTML5</span>
               </div>
               <div>
-                <FaCss3Alt size={32} />
+                <FaCss3Alt className="text-[28px] sm:text-[32px]" />
                 <span>CSS3</span>
               </div>
               <div>
-                <SiJavascript size={32} />
+                <SiJavascript className="text-[28px] sm:text-[32px]" />
                 <span>Javascript</span>
               </div>
               <div>
-                <SiTypescript size={32} />
+                <SiTypescript className="text-[28px] sm:text-[32px]" />
                 <span>Typescript</span>
               </div>
               <div>
-                <SiJquery size={32} />
+                <SiJquery className="text-[28px] sm:text-[32px]" />
                 <span>jQuery</span>
               </div>
               <div>
-                <RiTailwindCssFill size={32} />
+                <RiTailwindCssFill className="text-[28px] sm:text-[32px]" />
                 <span>Tailwind</span>
               </div>
               <div>
-                <RiNextjsFill size={32} />
+                <RiNextjsFill className="text-[28px] sm:text-[32px]" />
                 <span>Next.js</span>
               </div>
               <div>
-                <FaReact size={32} />
+                <FaReact className="text-[28px] sm:text-[32px]" />
                 <span>React</span>
               </div>
               <div>
-                <FaVuejs size={32} />
+                <FaVuejs className="text-[28px] sm:text-[32px]" />
                 <span>Vue</span>
               </div>
               <div>
-                <SiLivewire size={32} />
+                <SiLivewire className="text-[28px] sm:text-[32px]" />
                 <span>Livewire</span>
               </div>
               <div>
-                <FaNodeJs size={32} />
+                <FaNodeJs className="text-[28px] sm:text-[32px]" />
                 <span>Node.js</span>
               </div>
               <div>
-                <SiExpress size={32} />
+                <SiExpress className="text-[28px] sm:text-[32px]" />
                 <span>Express</span>
               </div>
               <div>
-                <SiInertia size={32} />
+                <SiInertia className="text-[28px] sm:text-[32px]" />
                 <span>Inertia</span>
               </div>
               <div>
-                <SiAlpinedotjs size={32} />
+                <SiAlpinedotjs className="text-[28px] sm:text-[32px]" />
                 <span>Alpine</span>
               </div>
               <div>
-                <FaPython size={32} />
+                <FaPython className="text-[28px] sm:text-[32px]" />
                 <span>Python</span>
               </div>
               <div>
-                <SiFastapi size={32} />
+                <SiFastapi className="text-[28px] sm:text-[32px]" />
                 <span>Fast API</span>
               </div>
               <div>
-                <SiPandas size={32} />
+                <SiPandas className="text-[28px] sm:text-[32px]" />
                 <span>Pandas</span>
               </div>
               <div>
-                <SiSelenium size={32} />
+                <SiSelenium className="text-[28px] sm:text-[32px]" />
                 <span>Selenium</span>
               </div>
               <div>
-                <SiDart size={32} />
+                <SiDart className="text-[28px] sm:text-[32px]" />
                 <span>Dart</span>
               </div>
               <div>
-                <SiFlutter size={32} />
+                <SiFlutter className="text-[28px] sm:text-[32px]" />
                 <span>Flutter</span>
               </div>
               <div>
-                <FaReact size={32} />
+                <FaReact className="text-[28px] sm:text-[32px]" />
                 <span>React Native</span>
               </div>
               <div>
-                <FaGitAlt size={32} />
+                <FaGitAlt className="text-[28px] sm:text-[32px]" />
                 <span>Git</span>
               </div>
               <div>
-                <SiGithubactions size={32} />
+                <SiGithubactions className="text-[28px] sm:text-[32px]" />
                 <span>Github Action</span>
               </div>
               <div>
-                <FaAws size={32} />
+                <FaAws className="text-[28px] sm:text-[32px]" />
                 <span>AWS</span>
               </div>
               <div>
-                <FaDocker size={32} />
+                <FaDocker className="text-[28px] sm:text-[32px]" />
                 <span>Docker</span>
               </div>
               <div>
-                <SiLangchain size={32} />
+                <SiLangchain className="text-[28px] sm:text-[32px]" />
                 <span>Langchain</span>
               </div>
               <div>
-                <TbSql size={32} />
+                <TbSql className="text-[28px] sm:text-[32px]" />
                 <span>SQL</span>
               </div>
               <div>
-                <SiMongodb size={32} />
+                <SiMongodb className="text-[28px] sm:text-[32px]" />
                 <span>Mongo</span>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="flex flex-col mt-20 mb-10 w-full">
+        <section className="flex flex-col mt-10 md:mt-20 w-full z-100">
           <span className="text-white uppercase font-normal font-mono text-sm">
             Projects
           </span>
-          <div className="flex gap-2 flex-1 mt-4">
-            <div className="flex-2 overflow-hidden flex-col rounded-xl bg-linear-to-br from-white/10 to-gray-100/10 border border-white/15 backdrop-blur-md">
+          <div className="flex gap-2 flex-1 mt-4 flex-col md:flex-row">
+            <div
+              className="relative isolate overflow-hidden flex-1 rounded-xl
+                bg-linear-to-br from-white/5 to-white/10
+                border border-white/5
+                backdrop-blur-sm
+                transform-gpu will-change-transform"
+            >
               <div className="px-4 py-4 flex flex-col relative pb-30">
                 <h3 className="text-transparent font-semibold font-inter bg-linear-to-br from-30% from-white to-white/50 bg-clip-text">
                   MathZap
@@ -387,17 +399,21 @@ export default function Home() {
                   <div>Vercel</div>
                 </div>
               </div>
-              <div className="absolute -bottom-5 -right-1 -z-1">
-                <Image
-                  src="/projects/test.png"
-                  alt="Math Quiz"
-                  width={200}
-                  height={200}
-                  className="object-contain"
-                />
-              </div>
+              <Image
+                src="/projects/mathzap.png"
+                alt="Math Quiz"
+                width={200}
+                height={200}
+                className="object-contain absolute -bottom-15 left-1/2 -translate-x-1/2 md:-right-1 -z-1"
+              />
             </div>
-            <div className="flex-3 overflow-hidden flex-col rounded-xl bg-linear-to-br from-white/10 to-black/10 border border-white/15  backdrop-blur-md backdrop-brightness-100">
+            <div
+              className="relative isolate overflow-hidden flex-1 md:flex-2 rounded-xl
+                bg-linear-to-br from-white/5 to-white/10
+                border border-white/5
+                backdrop-blur-sm
+                transform-gpu will-change-transform"
+            >
               <div className="px-4 py-4 flex flex-col relative pb-30">
                 <h3 className="text-transparent font-semibold font-inter bg-linear-to-br from-30% from-white to-white/50 bg-clip-text">
                   Web Portfolio
@@ -413,15 +429,77 @@ export default function Home() {
                   <div>Tailwind</div>
                   <div>Vercel</div>
                 </div>
-                <div className="absolute -z-1 -bottom-15 left-9 shadow-xl shadow-neutral-500">
+                <Image
+                  src="/projects/webportfolio.png"
+                  alt="Math Quiz"
+                  width={400}
+                  height={400}
+                  className="rounded-2xl border border-white/5 shadow-2xl shadow-white/20 absolute -z-1 -bottom-10 left-1/2 -translate-x-1/2"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex gap-2 flex-1 mt-2 flex-col md:flex-row">
+            <div
+              className="relative isolate overflow-hidden flex-1 rounded-xl
+                bg-linear-to-br from-white/5 to-white/10
+                border border-white/5
+                backdrop-blur-sm
+                transform-gpu will-change-transform "
+            >
+              <div className="px-4 py-4 flex flex-col relative pb-30">
+                <h3 className="text-transparent font-semibold font-inter bg-linear-to-br from-30% from-white to-white/50 bg-clip-text">
+                  Snap2Summon
+                </h3>
+                <span className="text-xs mt-1 font-inter text-neutral-400">
+                  An AI-powered app that extracts vehicle details from images
+                  and auto-fills digital summon forms for fast enforcement.
+                </span>
+                <div className="mt-2 flex gap-1 text-white *:rounded-full  *:px-2 *:py-0.5 *:bg-neutral-700 *:text-[10px] font-inter">
+                  <div>Flutter</div>
+                  <div>Riverpod</div>
+                  <div>FastApi</div>
+                  <div>GenAi</div>
+                  <div>Langchain</div>
+                </div>
+                <div className="absolute -z-1 -bottom-30 right-0">
                   <Image
-                    src="/projects/webportfolio.png"
+                    src="/projects/snap2summon.png"
                     alt="Math Quiz"
-                    width={450}
+                    width={400}
                     height={400}
-                    className="rounded-2xl border border-white/20"
+                    className="object-contain rotate-20"
                   />
                 </div>
+              </div>
+            </div>
+            <div
+              className="relative isolate overflow-hidden flex-1 rounded-xl
+                bg-linear-to-br from-white/5 to-white/10
+                border border-white/5
+                backdrop-blur-sm
+                transform-gpu will-change-transform"
+            >
+              <div className="px-4 py-4 flex flex-col relative pb-30">
+                <h3 className="text-transparent font-semibold font-inter bg-linear-to-br from-30% from-white to-white/50 bg-clip-text">
+                  DineFlow
+                </h3>
+                <span className="text-xs mt-1 font-inter text-neutral-400">
+                  A complete restaurant POS solution for seamless ordering,
+                  kitchen operations, and sales analytics.
+                </span>
+                <div className="mt-2 flex gap-1 text-white *:rounded-full  *:px-2 *:py-0.5 *:bg-neutral-700 *:text-[10px] font-inter">
+                  <div>React</div>
+                  <div>Typescript</div>
+                  <div>FastApi</div>
+                </div>
+                <Image
+                  src="/projects/dineflow.png"
+                  alt="Math Quiz"
+                  width={400}
+                  height={400}
+                  className="object-contain drop-shadow-2xl absolute -z-1 -bottom-23 right-0"
+                />
               </div>
             </div>
           </div>
