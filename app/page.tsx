@@ -42,19 +42,19 @@ import { TbSql } from "react-icons/tb";
 import { TiLocation } from "react-icons/ti";
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col items relative ">
+    <div className="min-h-screen flex flex-col items relative bg-black">
       <div className="fixed top-0 right-20 hidden lg:flex flex-col items-center w-px group">
         <div className="h-40 w-px bg-neutral-500 rounded-md group-hover:bg-neutral-100"></div>
         <div className="rotate-90 text-neutral-500 font-mono mt-20 text-sm group-hover:text-neutral-100 transition-all cursor-pointer">
           jungyanlee@gmail.com
         </div>
       </div>
-      <div className="fixed left-0 top-0 -z-10 h-full w-full">
+      {/* <div className="fixed left-0 top-0 -z-10 h-full w-full">
         <div className="relative h-full w-full bg-black">
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[14px_24px]"></div>
           <div className="absolute left-0 right-0 top-0 h-full w-full bg-[radial-gradient(circle_400px_at_25%_200px,#fbfbfb36,#000)]"></div>
         </div>
-      </div>
+      </div> */}
       <div className="max-w-4xl px-10 py-10 mx-auto w-full flex flex-col">
         <header className="flex justify-between mt-10 items-center font-inter">
           <span className=" text-neutral-50  rounded-md size-10 flex items-center justify-center font-inter font-semibold">
