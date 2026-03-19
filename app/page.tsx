@@ -1,7 +1,6 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import {
-  PinLocation01Icon,
   Mail01Icon,
   Github01Icon,
   Linkedin01Icon,
@@ -35,7 +34,7 @@ import {
   SiDart,
   SiFlutter,
   SiGithubactions,
-  SiLangchain,
+  SiEnvoyproxy,
   SiMongodb,
 } from "react-icons/si";
 import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri";
@@ -131,7 +130,7 @@ export default function Home() {
               />
               <span>Linkedin</span>
             </a>
-            <a href="/resume.docx" target="_blank">
+            <a href="/Resume (Lee Jung Yan).docx" target="_blank">
               <HugeiconsIcon
                 icon={File01Icon}
                 size={16}
@@ -140,7 +139,7 @@ export default function Home() {
               />
               <span>Resume</span>
             </a>
-            <a href="/cv.docx" target="_blank">
+            <a href="/CV (Lee Jung Yan).docx" target="_blank">
               <HugeiconsIcon
                 icon={File02Icon}
                 size={16}
@@ -180,7 +179,7 @@ export default function Home() {
                 />
                 <span className="text-neutral-400 ml-2">Yell Research</span>
                 <span className="text-neutral-500 ml-auto">
-                  Dec, 2025 - Present
+                  Dec, 2025 - Mar 2026
                 </span>
               </div>
               <span className="mt-2 text-xs font-inter text-white text-justify">
@@ -190,7 +189,16 @@ export default function Home() {
                 cross-functional teams to build reliable, user-focused digital
                 solutions.
               </span>
-              <div className="flex"></div>
+              <div className="flex text-neutral-200 gap-2 mt-2 items-center">
+                <FaPhp size={20} />
+                <FaHtml5 size={16} />
+                <FaCss3Alt size={16} />
+                <SiJavascript size={16} />
+                <SiTypescript size={16} />
+                <SiJquery size={16} />
+                <FaReact size={16} />
+                <SiExpress size={16} />
+              </div>
             </div>
             <div className="bg-linear-to-r from-neutral-600 via-neutral-50 to-neutral-600 h-px w-1/2 my-2"></div>
             <div className="flex flex-col">
@@ -351,8 +359,8 @@ export default function Home() {
                 <span>Docker</span>
               </div>
               <div>
-                <SiLangchain size={32} />
-                <span>Langchain</span>
+                <SiEnvoyproxy size={32} />
+                <span>Envoy Proxy</span>
               </div>
               <div>
                 <TbSql size={32} />
