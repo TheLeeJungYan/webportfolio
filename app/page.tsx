@@ -1,541 +1,687 @@
-import { HugeiconsIcon } from "@hugeicons/react";
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion, type Variants } from "motion/react";
 import {
-  Mail01Icon,
-  Github01Icon,
-  Linkedin01Icon,
-  File01Icon,
-  File02Icon,
-} from "@hugeicons/core-free-icons";
-import { HiOutlineDocumentDuplicate } from "react-icons/hi";
+  HiOutlineMail,
+  HiOutlineDocumentText,
+  HiOutlineCheck,
+  HiOutlineLocationMarker,
+  HiOutlineSun,
+  HiOutlineMoon,
+  HiOutlineDocumentDuplicate,
+} from "react-icons/hi";
+import { FiArrowUpRight } from "react-icons/fi";
 import {
-  FaHtml5,
-  FaCss3Alt,
+  FaGithub,
+  FaLinkedin,
   FaPhp,
   FaLaravel,
   FaReact,
   FaVuejs,
-  FaNodeJs,
   FaPython,
-  FaGitAlt,
-  FaAws,
   FaDocker,
-  FaMicrosoft,
+  FaAws,
+  FaRobot,
+  FaDatabase,
   FaJava,
+  FaMicrosoft,
 } from "react-icons/fa";
 import {
-  SiJavascript,
-  SiJquery,
   SiTypescript,
-  SiAlpinedotjs,
-  SiLivewire,
-  SiExpress,
-  SiInertia,
+  SiJavascript,
+  SiNextdotjs,
   SiFastapi,
-  SiPandas,
-  SiSelenium,
-  SiDart,
   SiFlutter,
-  SiGithubactions,
-  SiEnvoyproxy,
+  SiTailwindcss,
+  SiMysql,
   SiMongodb,
+  SiEnvoyproxy,
+  SiExpress,
+  SiLivewire,
+  SiInertia,
+  SiNestjs,
+  SiLinux,
+  SiGnubash,
+  SiPandas,
+  SiRabbitmq,
+  SiLangchain,
+  SiSelenium,
+  SiJquery,
+  SiAlpinedotjs,
+  SiTestinglibrary,
 } from "react-icons/si";
-import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri";
 import { VscAzure } from "react-icons/vsc";
-import { TbSql } from "react-icons/tb";
-import { TiLocation } from "react-icons/ti";
+import { TbBrandReactNative } from "react-icons/tb";
+
 export default function Home() {
+  const [copied, setCopied] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("portfolio-theme") as "dark" | "light" | null;
+    const initialTheme = saved || "dark";
+    setTheme(initialTheme);
+    if (initialTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    localStorage.setItem("portfolio-theme", nextTheme);
+    if (nextTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("jungyanlee@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2200);
+  };
+
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (custom: number = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: custom * 0.1,
+        ease: "easeOut",
+      },
+    }),
+  };
+
+  const projects = [
+    {
+      title: "Snap2Summon",
+      tagline: "AI Vision Mobile Enforcement Assistant",
+      description:
+        "An AI-powered mobile application that automatically detects vehicle details and license plates via computer vision, pre-filling digital summon forms to accelerate law enforcement workflows.",
+      image: "/projects/snap2summon.png",
+      tags: ["Flutter", "FastAPI", "Riverpod", "LangChain", "GenAI"],
+      role: "Lead Mobile & Backend Developer",
+      githubUrl: "https://github.com/TheLeeJungYan",
+      liveUrl: null,
+    },
+    {
+      title: "DineFlow POS",
+      tagline: "Real-Time Restaurant & Kitchen Execution Suite",
+      description:
+        "A full-stack point-of-sale platform featuring real-time table state synchronization, instant kitchen display ticket dispatching, and automated sales reporting.",
+      image: "/projects/dineflow.png",
+      tags: ["React 19", "TypeScript", "FastAPI", "Tailwind CSS"],
+      role: "Full-Stack Engineer",
+      githubUrl: "https://github.com/TheLeeJungYan",
+      liveUrl: null,
+    },
+    {
+      title: "MathZap",
+      tagline: "High-Velocity Arithmetic Assessment Web App",
+      description:
+        "Interactive math trainer featuring zero-latency reactive state management, rapid-fire timed arithmetic challenges, and instant performance metrics.",
+      image: "/projects/mathzap.png",
+      tags: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+      role: "Frontend Engineer",
+      githubUrl: "https://github.com/TheLeeJungYan",
+      liveUrl: "https://mathzap.vercel.app",
+    },
+    {
+      title: "Personal Engineering Portfolio",
+      tagline: "High-Performance Portfolio & Architecture Showcase",
+      description:
+        "Minimalist, typography-driven portfolio crafted with Next.js App Router, React 19, Motion, and Tailwind CSS v4, built for sub-second mobile load times.",
+      image: "/projects/webportfolio.png",
+      tags: ["Next.js", "React 19", "TypeScript", "Motion", "Tailwind v4"],
+      role: "Design & Development",
+      githubUrl: "https://github.com/TheLeeJungYan",
+      liveUrl: "https://jungyanlee.vercel.app",
+    },
+  ];
+
+  const experiences = [
+    {
+      role: "Solution Developer",
+      company: "Eastern Decorator",
+      period: "Apr 2026 — Present",
+      logo: "/companies/easterndecorator.png",
+      summary:
+        "Enterprise solutions engineering focused on automated ETL workflows, document OCR processing, system integrations, and custom Model Context Protocol (MCP) server implementations.",
+      bullets: [
+        "Architected high-throughput data extraction and ETL workflows with Python, Pandas, and FastAPI connecting internal ERP and business operations.",
+        "Engineered production OCR pipelines automating structured data capture from invoices and supply chain records.",
+        "Built and deployed custom Model Context Protocol (MCP) servers and tools, enabling LLMs and AI agent integrations across internal databases.",
+      ],
+      skills: ["Python", "FastAPI", "Pandas", "ETL", "OCR", "MCP", "RabbitMQ", "SQL", "Linux", "Bash"],
+    },
+    {
+      role: "Software Engineer",
+      company: "Yell Research",
+      period: "Dec 2025 — Mar 2026",
+      logo: "/companies/yellresearch.png",
+      summary:
+        "Full-stack software engineering in a fast-paced agency environment, delivering scalable web features, tuning API throughput, and deploying cloud services.",
+      bullets: [
+        "Architected responsive full-stack features using PHP, Express, and React to meet rapid client delivery schedules.",
+        "Configured and maintained Envoy proxy gateways and optimized backend request pipelines for high-traffic endpoints.",
+        "Collaborated on Azure DevOps automated continuous integration and deployment workflows.",
+      ],
+      skills: ["PHP", "Express", "React", "TypeScript", "Envoy", "Azure DevOps"],
+    },
+    {
+      role: "Software Engineer",
+      company: "Polyware Sdn Bhd",
+      period: "Jun 2023 — Dec 2025",
+      logo: "/companies/polyware.png",
+      summary:
+        "Core enterprise ERP engineering focused on manufacturing workflow automation, custom operational modules, and relational database optimization.",
+      bullets: [
+        "Engineered end-to-end ERP modules automating procurement cycles, manufacturing scheduling, and inventory audits.",
+        "Replaced manual paper-based processes with reactive Laravel, Livewire, and Vue interfaces, boosting departmental productivity.",
+        "Tuned high-volume MySQL queries and transaction schemas hosted on AWS EC2 and RDS instances.",
+      ],
+      skills: ["Laravel", "Livewire", "Vue.js", "Inertia", "MySQL", "AWS"],
+    },
+  ];
+
+  const skillGroups = [
+    {
+      category: "AI, LLM & Data",
+      items: [
+        { name: "MCP", icon: FaRobot },
+        { name: "LangChain", icon: SiLangchain },
+        { name: "LangGraph", icon: FaRobot },
+        { name: "Python", icon: FaPython },
+        { name: "FastAPI", icon: SiFastapi },
+        { name: "Pandas", icon: SiPandas },
+        { name: "OCR", icon: FaRobot },
+      ],
+    },
+    {
+      category: "Backend & Systems",
+      items: [
+        { name: "PHP", icon: FaPhp },
+        { name: "Laravel", icon: FaLaravel },
+        { name: "NestJS", icon: SiNestjs },
+        { name: "RabbitMQ", icon: SiRabbitmq },
+        { name: "Java", icon: FaJava },
+        { name: "Livewire", icon: SiLivewire },
+        { name: "Express", icon: SiExpress },
+        { name: "MySQL / SQL", icon: SiMysql },
+        { name: "MongoDB", icon: SiMongodb },
+      ],
+    },
+    {
+      category: "Frontend & Mobile",
+      items: [
+        { name: "React", icon: FaReact },
+        { name: "React Native", icon: TbBrandReactNative },
+        { name: "Next.js", icon: SiNextdotjs },
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "JavaScript", icon: SiJavascript },
+        { name: "Vue.js", icon: FaVuejs },
+        { name: "Flutter", icon: SiFlutter },
+        { name: "Inertia.js", icon: SiInertia },
+        { name: "Alpine.js", icon: SiAlpinedotjs },
+        { name: "jQuery", icon: SiJquery },
+        { name: "Tailwind CSS", icon: SiTailwindcss },
+      ],
+    },
+    {
+      category: "DevOps & Cloud",
+      items: [
+        { name: "Linux", icon: SiLinux },
+        { name: "Bash", icon: SiGnubash },
+        { name: "Docker", icon: FaDocker },
+        { name: "AWS", icon: FaAws },
+        { name: "Azure DevOps", icon: VscAzure },
+        { name: "Envoy Proxy", icon: SiEnvoyproxy },
+      ],
+    },
+    {
+      category: "Enterprise & Automation",
+      items: [
+        { name: "Playwright", icon: SiTestinglibrary },
+        { name: "Selenium", icon: SiSelenium },
+        { name: "VBA", icon: HiOutlineDocumentDuplicate },
+        { name: "Office.js", icon: FaMicrosoft },
+      ],
+    },
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col items relative bg-black">
-      <div className="fixed top-0 right-20 hidden lg:flex flex-col items-center w-px group">
-        <div className="h-40 w-px bg-neutral-500 rounded-md group-hover:bg-neutral-100"></div>
-        <div className="rotate-90 text-neutral-500 font-mono mt-20 text-sm group-hover:text-neutral-100 transition-all cursor-pointer">
-          jungyanlee@gmail.com
-        </div>
-      </div>
-      {/* <div className="fixed left-0 top-0 -z-10 h-full w-full">
-        <div className="relative h-full w-full bg-black">
-          <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[14px_24px]"></div>
-          <div className="absolute left-0 right-0 top-0 h-full w-full bg-[radial-gradient(circle_400px_at_25%_200px,#fbfbfb36,#000)]"></div>
-        </div>
-      </div> */}
-      <div className="max-w-4xl px-10 py-10 mx-auto w-full flex flex-col">
-        <header className="flex justify-between mt-10 items-center font-inter">
-          <span className=" text-neutral-50  rounded-md size-10 flex items-center justify-center font-inter font-semibold">
-            JY
-          </span>
-        </header>
-
-        <section className="flex flex-col mt-20 md:mt-30">
-          <div className="flex">
-            <span className="relative inline-block overflow-hidden rounded-full p-px">
-              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#171717_0%,#f0fdf4_50%,#171717_100%)]"></span>
-              <div className="inline-flex gap-2 items-center bg-neutral-800 h-full w-full cursor-pointer justify-center rounded-full px-3 py-1 text-xs font-medium leading-5 backdrop-blur-xl  text-slate-200">
-                <div className="size-2 bg-emerald-200 animate-pulse rounded-full"></div>
-                <span className="text-emerald-50 font-inter">
-                  Available for Opportunities
-                </span>
-              </div>
-            </span>
-          </div>
-          <h1 className="relative mt-5 w-fit text-transparent bg-clip-text text-5xl md:text-7xl font-medium font-sans bg-linear-to-br from-white to-white   ">
+    <div className="min-h-screen bg-[#fafafa] dark:bg-[#09090b] text-[#18181b] dark:text-[#fafafa] transition-colors duration-300 selection:bg-neutral-300 dark:selection:bg-neutral-700">
+      {/* Top Floating Minimalist Navigation */}
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#09090b]/80 border-b border-neutral-200 dark:border-white/[0.06] transition-colors">
+        <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+          <a
+            href="#"
+            className="text-xs font-semibold tracking-wider uppercase text-neutral-800 dark:text-neutral-300 hover:text-black dark:hover:text-white transition flex items-center gap-2"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
             Lee Jung Yan
-          </h1>
+          </a>
+          
+          <div className="flex items-center gap-5">
+            <nav className="hidden sm:flex items-center gap-5 text-xs text-neutral-600 dark:text-neutral-400">
+              <a href="#projects" className="hover:text-black dark:hover:text-white transition">
+                Projects
+              </a>
+              <a href="#experience" className="hover:text-black dark:hover:text-white transition">
+                Experience
+              </a>
+              <a href="#skills" className="hover:text-black dark:hover:text-white transition">
+                Skills
+              </a>
+              <a href="#contact" className="hover:text-black dark:hover:text-white transition">
+                Contact
+              </a>
+            </nav>
 
-          <h4 className=" mt-2 font-medium font-inter text-neutral-400 md:text-normal text-sm text-justify">
-            Software Engineer focused on building
-            <span className="text-emerald-50 italic"> scalable</span> business
-            systems ,
-            <span className="text-emerald-50 italic">
-              optimizing performance
-            </span>
-            , and delivering
-            <span className="text-emerald-50 italic"> reliable </span>{" "}
-            enterprise solutions .
-          </h4>
-          <div className="flex text-neutral-400 mt-4 items-center gap-1.5 font-sans md:text-sm text-xs">
-            <span className="text-rose-400">
-              <TiLocation size={16} color="currentColor" strokeWidth={1.5} />
-            </span>
-            <span>Ipoh , Perak</span>
+            {/* Theme Toggle Button */}
+            {mounted && (
+              <button
+                onClick={toggleTheme}
+                aria-label="Toggle Light and Dark Mode"
+                className="p-2 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition cursor-pointer active:scale-95"
+              >
+                {theme === "dark" ? (
+                  <HiOutlineSun className="w-4 h-4 text-amber-400" />
+                ) : (
+                  <HiOutlineMoon className="w-4 h-4 text-neutral-600" />
+                )}
+              </button>
+            )}
           </div>
-          <div className="flex flex-wrap gap-2 lg:gap-x-3 mt-4 font-inter text-xs md:text-sm *:flex *:gap-2 *:items-center *:px-4 *:py-2 *:rounded-xl  *:bg-neutral-800 *:hover:bg-neutral-800/80 *:transition-all *:border *:border-neutral-700/30 *:text-neutral-200">
+        </div>
+      </header>
+
+      <main className="max-w-4xl mx-auto px-6 pt-16 md:pt-24 pb-28 space-y-24">
+        {/* ========================================================================= */}
+        {/* HERO SECTION: Emil Kowalski / Lee Robinson inspired minimalist intro */}
+        {/* ========================================================================= */}
+        <motion.section
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+          custom={0}
+          className="space-y-6"
+        >
+          {/* Availability Pill */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-medium">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span>Available for Full-Time Opportunities</span>
+          </div>
+
+          <div className="space-y-3">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
+              Software Engineer crafting reliable systems.
+            </h1>
+            <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed">
+              Hi, I’m <span className="text-neutral-900 dark:text-white font-medium">Lee Jung Yan</span>. I engineer intelligent ETL pipelines, enterprise integration hubs, and responsive full-stack applications from Ipoh, Malaysia.
+            </p>
+          </div>
+
+          {/* Location & Quick Meta */}
+          <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-500 font-mono">
+            <HiOutlineLocationMarker className="text-rose-500 text-sm" />
+            <span>Ipoh, Perak, Malaysia</span>
+            <span>•</span>
+            <span>Solutions & Architecture</span>
+          </div>
+
+          {/* Social & Contact Actions */}
+          <div className="flex flex-wrap items-center gap-2.5 pt-2">
+            <button
+              onClick={copyEmail}
+              className="relative px-4 py-2 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-black text-xs font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition flex items-center gap-2 cursor-pointer shadow-sm active:scale-95"
+            >
+              {copied ? (
+                <>
+                  <HiOutlineCheck className="text-emerald-400 dark:text-emerald-700 text-sm" />
+                  <span>Email Copied!</span>
+                </>
+              ) : (
+                <>
+                  <HiOutlineMail className="text-sm" />
+                  <span>jungyanlee@gmail.com</span>
+                </>
+              )}
+            </button>
+
             <a
-              href="mailto:jungyanlee@gmail.com"
+              href="https://github.com/TheLeeJungYan"
               target="_blank"
               rel="noreferrer"
+              className="px-3.5 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 hover:border-neutral-300 dark:hover:border-white/20 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white text-xs font-medium transition flex items-center gap-2 active:scale-95 shadow-xs"
             >
-              <HugeiconsIcon
-                icon={Mail01Icon}
-                size={16}
-                color="currentColor"
-                strokeWidth={1.5}
-              />
-              <span>Email</span>
+              <FaGithub className="text-sm" />
+              <span>GitHub</span>
             </a>
-            <a href="https://github.com/TheLeeJungYan" target="_blank">
-              <HugeiconsIcon
-                icon={Github01Icon}
-                size={16}
-                color="currentColor"
-                strokeWidth={1.5}
-              />
-              <span>Github</span>
-            </a>
+
             <a
               href="https://www.linkedin.com/in/lee-jung-yan-619863338"
               target="_blank"
+              rel="noreferrer"
+              className="px-3.5 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 hover:border-neutral-300 dark:hover:border-white/20 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white text-xs font-medium transition flex items-center gap-2 active:scale-95 shadow-xs"
             >
-              <HugeiconsIcon
-                icon={Linkedin01Icon}
-                size={16}
-                color="currentColor"
-                strokeWidth={1.5}
-              />
-              <span>Linkedin</span>
+              <FaLinkedin className="text-sm text-sky-500" />
+              <span>LinkedIn</span>
             </a>
-            <a href="/documents/Resume (Lee Jung Yan).docx" target="_blank">
-              <HugeiconsIcon
-                icon={File01Icon}
-                size={16}
-                color="currentColor"
-                strokeWidth={1.5}
-              />
+
+            <a
+              href="/documents/Resume (Lee Jung Yan).docx"
+              target="_blank"
+              className="px-3.5 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 hover:border-neutral-300 dark:hover:border-white/20 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white text-xs font-medium transition flex items-center gap-2 active:scale-95 shadow-xs"
+            >
+              <HiOutlineDocumentText className="text-sm" />
               <span>Resume</span>
             </a>
-            <a href="/documents/CV (Lee Jung Yan).docx" target="_blank">
-              <HugeiconsIcon
-                icon={File02Icon}
-                size={16}
-                color="currentColor"
-                strokeWidth={1.5}
-              />
-              <span>CV</span>
+          </div>
+        </motion.section>
+
+        {/* ========================================================================= */}
+        {/* PROJECTS SECTION: Large, crisp visual cards with real screenshots */}
+        {/* ========================================================================= */}
+        <motion.section
+          id="projects"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={fadeInUp}
+          custom={1}
+          className="space-y-8 scroll-mt-20"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-neutral-200 dark:border-white/[0.08] pb-4">
+            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+              Featured Projects
+            </h2>
+            <span className="text-xs text-neutral-500 dark:text-neutral-400">
+              Selected production systems & applications
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects.map((proj, idx) => (
+              <motion.article
+                key={proj.title}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="group flex flex-col rounded-2xl bg-white dark:bg-neutral-900/40 border border-neutral-200 dark:border-white/[0.08] hover:border-neutral-300 dark:hover:border-white/20 overflow-hidden transition-all shadow-xs hover:shadow-md"
+              >
+                {/* Visual Screenshot Frame */}
+                <div className="relative w-full h-56 bg-neutral-100 dark:bg-neutral-950 border-b border-neutral-200 dark:border-white/[0.06] overflow-hidden flex items-center justify-center p-4">
+                  <Image
+                    src={proj.image}
+                    alt={proj.title}
+                    width={500}
+                    height={300}
+                    className="w-full h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 dark:from-neutral-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-semibold text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                        {proj.title}
+                        <FiArrowUpRight className="text-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </h3>
+                      <span className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
+                        0{idx + 1}
+                      </span>
+                    </div>
+                    <p className="text-xs font-medium text-emerald-600 dark:text-emerald-400/90">
+                      {proj.tagline}
+                    </p>
+                    <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                      {proj.description}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4 pt-2">
+                    {/* Tech Pills */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {proj.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 rounded-md bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] text-[11px] font-mono text-neutral-700 dark:text-neutral-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Action Links */}
+                    <div className="flex items-center gap-3 pt-3 border-t border-neutral-200 dark:border-white/[0.06] text-xs font-medium">
+                      {proj.liveUrl ? (
+                        <a
+                          href={proj.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-neutral-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition flex items-center gap-1"
+                        >
+                          <span>Live Demo</span>
+                          <FiArrowUpRight className="text-xs" />
+                        </a>
+                      ) : null}
+                      {proj.githubUrl ? (
+                        <a
+                          href={proj.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition flex items-center gap-1"
+                        >
+                          <FaGithub className="text-xs" />
+                          <span>Source</span>
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* ========================================================================= */}
+        {/* EXPERIENCE SECTION: Scannable, bullet-pointed impact with rounded logos */}
+        {/* ========================================================================= */}
+        <motion.section
+          id="experience"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={fadeInUp}
+          custom={2}
+          className="space-y-8 scroll-mt-20"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-neutral-200 dark:border-white/[0.08] pb-4">
+            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+              Work Experience
+            </h2>
+            <span className="text-xs text-neutral-500 dark:text-neutral-400">
+              Proven engineering track record
+            </span>
+          </div>
+
+          <div className="space-y-6">
+            {experiences.map((exp) => (
+              <div
+                key={exp.company}
+                className="p-6 rounded-2xl bg-white dark:bg-neutral-900/40 border border-neutral-200 dark:border-white/[0.08] hover:border-neutral-300 dark:hover:border-white/20 transition-all shadow-xs space-y-4"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-3">
+                    {/* Logo container with rounded border */}
+                    <div className="relative w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-white/10 overflow-hidden flex items-center justify-center p-1.5 shrink-0 shadow-2xs">
+                      <Image
+                        src={exp.logo}
+                        alt={exp.company}
+                        width={44}
+                        height={44}
+                        className="w-full h-full object-contain rounded-lg"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
+                        {exp.role}
+                      </h3>
+                      <div className="text-xs text-neutral-600 dark:text-neutral-400 font-medium">
+                        {exp.company}
+                      </div>
+                    </div>
+                  </div>
+                  <span className="text-xs font-mono text-neutral-500 dark:text-neutral-400 sm:text-right">
+                    {exp.period}
+                  </span>
+                </div>
+
+                <p className="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                  {exp.summary}
+                </p>
+
+                {/* Impact Bullets */}
+                <ul className="space-y-1.5 text-xs text-neutral-600 dark:text-neutral-400 list-disc list-outside ml-4 leading-relaxed">
+                  {exp.bullets.map((bullet, bIdx) => (
+                    <li key={bIdx}>{bullet}</li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {exp.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-2 py-0.5 rounded-md bg-neutral-100 dark:bg-white/[0.03] border border-neutral-200 dark:border-white/[0.06] text-[11px] font-mono text-neutral-600 dark:text-neutral-400"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* ========================================================================= */}
+        {/* SKILLS SECTION: Grouped cleanly without cognitive overload */}
+        {/* ========================================================================= */}
+        <motion.section
+          id="skills"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={fadeInUp}
+          custom={3}
+          className="space-y-8 scroll-mt-20"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-neutral-200 dark:border-white/[0.08] pb-4">
+            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+              Skills & Technologies
+            </h2>
+            <span className="text-xs text-neutral-500 dark:text-neutral-400">
+              Languages, frameworks, protocols & infrastructure
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {skillGroups.map((group) => (
+              <div
+                key={group.category}
+                className="p-5 rounded-2xl bg-white dark:bg-neutral-900/40 border border-neutral-200 dark:border-white/[0.08] space-y-4 shadow-xs"
+              >
+                <h3 className="text-xs font-semibold text-neutral-700 dark:text-neutral-200 uppercase tracking-wider font-mono">
+                  {group.category}
+                </h3>
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  {group.items.map((item) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={item.name}
+                        className="flex items-center gap-2 p-2 rounded-lg bg-neutral-50 dark:bg-neutral-950/60 border border-neutral-200 dark:border-white/[0.04] text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition"
+                      >
+                        <IconComponent className="text-sm text-neutral-500 shrink-0" />
+                        <span className="text-[11px] truncate">{item.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* ========================================================================= */}
+        {/* CONTACT / CTA SECTION: Clean, direct invite */}
+        {/* ========================================================================= */}
+        <motion.section
+          id="contact"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={fadeInUp}
+          custom={4}
+          className="p-8 md:p-12 rounded-3xl bg-white dark:bg-neutral-900/40 border border-neutral-200 dark:border-white/[0.08] text-center space-y-5 scroll-mt-20 shadow-xs"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white tracking-tight">
+            Let’s build something great together.
+          </h2>
+          <p className="text-xs md:text-sm text-neutral-600 dark:text-neutral-400 max-w-lg mx-auto leading-relaxed">
+            I’m always open to discussing new engineering opportunities, enterprise architecture, or innovative web and mobile applications.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <button
+              onClick={copyEmail}
+              className="px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-black text-xs font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition flex items-center gap-2 cursor-pointer shadow-sm active:scale-95"
+            >
+              {copied ? (
+                <>
+                  <HiOutlineCheck className="text-emerald-400 dark:text-emerald-700 text-sm" />
+                  <span>Email Copied!</span>
+                </>
+              ) : (
+                <>
+                  <HiOutlineMail className="text-sm" />
+                  <span>jungyanlee@gmail.com</span>
+                </>
+              )}
+            </button>
+            <a
+              href="https://www.linkedin.com/in/lee-jung-yan-619863338"
+              target="_blank"
+              rel="noreferrer"
+              className="px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 hover:border-neutral-300 dark:hover:border-white/20 text-neutral-800 dark:text-white text-xs font-medium transition active:scale-95 shadow-xs"
+            >
+              Connect on LinkedIn ↗
             </a>
           </div>
-        </section>
+        </motion.section>
+      </main>
 
-        <section className="flex flex-col mt-10 md:mt-20 z-10">
-          <span className="text-white uppercase font-normal font-mono text-sm">
-            experiences
-          </span>
-          <div className="flex flex-col mt-2 gap-2">
-            <div className="flex flex-col">
-              <div className="flex items-center">
-                <span className="font-inter bg-clip-text text-transparent bg-linear-to-br from-neutral-50  to-neutral-600 font-bold text-lg md:text-2xl">
-                  Software Engineer
-                </span>
-                {/* <div
-                  className="bg-emerald-500/10  border border-emerald-500/30 font-semibold text-xs font-inter px-2 py-0.5 text-emerald-500 rounded-full ml-2
-                "
-                >
-                  Current
-                </div> */}
-              </div>
-
-              <div className="flex items-center text-xs md:text-sm">
-                <Image
-                  src="/companies/yellresearch.png"
-                  alt="Yell Research"
-                  width={16}
-                  height={16}
-                  className="rounded-md object-contain"
-                />
-                <span className="text-neutral-400 ml-2">Yell Research</span>
-                <span className="text-neutral-500 ml-auto">
-                  Dec, 2025 - Mar 2026
-                </span>
-              </div>
-              <span className="mt-2 text-[11px] md:text-xs font-inter text-white text-justify">
-                Full-stack application development in a fast-paced software
-                house environment, delivering scalable features, enhancing
-                system performance, and collaborating closely with
-                cross-functional teams to build reliable, user-focused digital
-                solutions.
-              </span>
-              <div className="flex text-neutral-200 gap-2 mt-2 items-center">
-                <FaPhp size={20} />
-                <FaHtml5 size={16} />
-                <FaCss3Alt size={16} />
-                <SiJavascript size={16} />
-                <SiTypescript size={16} />
-                <SiJquery size={16} />
-                <FaReact size={16} />
-                <SiExpress size={16} />
-                <SiEnvoyproxy size={16} />
-                <VscAzure size={16} />
-              </div>
-            </div>
-            <div className="bg-linear-to-r from-neutral-600 via-neutral-50 to-neutral-600 h-px w-1/2 my-2"></div>
-            <div className="flex flex-col">
-              <span className="font-inter bg-clip-text text-transparent bg-linear-to-br from-neutral-50  to-neutral-600 font-bold text-lg md:text-2xl">
-                Software Engineer
-              </span>
-              <div className="flex items-center text-xs md:text-sm">
-                <Image
-                  src="/companies/polyware.png"
-                  alt="Polyware"
-                  width={16}
-                  height={16}
-                  className="rounded-md"
-                />
-                <span className="text-neutral-400 ml-2">Polyware Sdn Bhd</span>
-                <span className="text-neutral-500 ml-auto">
-                  Jun, 2023 - Dec, 2025
-                </span>
-              </div>
-              <span className="mt-2 text-[11px] md:text-xs  font-inter text-white text-justify">
-                ERP application development focused on workflow automation,
-                system enhancement, and seamless cross-department operations,
-                including building new modules from scratch, improving existing
-                features, and ensuring smooth integration across internal
-                platforms.
-              </span>
-              <div className="flex text-neutral-200 gap-2 mt-2 items-center">
-                <FaPhp size={20} />
-                <FaLaravel size={16} />
-                <SiLivewire size={16} />
-                <FaHtml5 size={16} />
-                <FaCss3Alt size={16} />
-                <SiJavascript size={16} />
-                <SiJquery size={16} />
-                <RiTailwindCssFill size={16} />
-                <FaVuejs size={16} />
-                <SiInertia size={16} />
-                <FaReact size={16} />
-                <FaAws size={16} />
-                <TbSql size={20} />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="flex flex-col mt-10 md:mt-20 w-full z-10">
-          <span className="text-white uppercase font-normal font-mono text-sm">
-            Technologies
-          </span>
-          <div className="flex flex-col justify-center items-center w-full ">
-            <div
-              className="w-full mt-4 grid grid-cols-[repeat(auto-fill,minmax(50px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(80px,1fr))] gap-2
-                    text-white text-[8px] sm:text-[10px] font-sans
-                    *:gap-2 *:flex *:flex-col *:items-center *:justify-center
-                    *:sm:border *:sm:border-white/5 *:sm:bg-white/5 *:sm:backdrop-blur-sm
-                    *:rounded-md *:cursor-pointer
-                    *:w-full *:sm:min-h-[90px]"
-            >
-              <div>
-                <FaPhp className="text-[28px] sm:text-[32px]" />
-                <span className="">PHP</span>
-              </div>
-              <div>
-                <FaLaravel className="text-[28px] sm:text-[32px]" />
-                <span>Laravel</span>
-              </div>
-              <div>
-                <FaHtml5 className="text-[28px] sm:text-[32px]" />
-                <span>HTML5</span>
-              </div>
-              <div>
-                <FaCss3Alt className="text-[28px] sm:text-[32px]" />
-                <span>CSS3</span>
-              </div>
-              <div>
-                <SiJavascript className="text-[28px] sm:text-[32px]" />
-                <span>Javascript</span>
-              </div>
-              <div>
-                <SiTypescript className="text-[28px] sm:text-[32px]" />
-                <span>Typescript</span>
-              </div>
-              <div>
-                <SiJquery className="text-[28px] sm:text-[32px]" />
-                <span>jQuery</span>
-              </div>
-              <div>
-                <RiTailwindCssFill className="text-[28px] sm:text-[32px]" />
-                <span>Tailwind</span>
-              </div>
-              <div>
-                <RiNextjsFill className="text-[28px] sm:text-[32px]" />
-                <span>Next.js</span>
-              </div>
-              <div>
-                <FaReact className="text-[28px] sm:text-[32px]" />
-                <span>React</span>
-              </div>
-              <div>
-                <FaVuejs className="text-[28px] sm:text-[32px]" />
-                <span>Vue</span>
-              </div>
-              <div>
-                <SiLivewire className="text-[28px] sm:text-[32px]" />
-                <span>Livewire</span>
-              </div>
-              <div>
-                <FaNodeJs className="text-[28px] sm:text-[32px]" />
-                <span>Node.js</span>
-              </div>
-              <div>
-                <SiExpress className="text-[28px] sm:text-[32px]" />
-                <span>Express</span>
-              </div>
-              <div>
-                <SiInertia className="text-[28px] sm:text-[32px]" />
-                <span>Inertia</span>
-              </div>
-              <div>
-                <SiAlpinedotjs className="text-[28px] sm:text-[32px]" />
-                <span>Alpine</span>
-              </div>
-              <div>
-                <FaPython className="text-[28px] sm:text-[32px]" />
-                <span>Python</span>
-              </div>
-              <div>
-                <SiFastapi className="text-[28px] sm:text-[32px]" />
-                <span>Fast API</span>
-              </div>
-              <div>
-                <SiPandas className="text-[28px] sm:text-[32px]" />
-                <span>Pandas</span>
-              </div>
-              <div>
-                <SiSelenium className="text-[28px] sm:text-[32px]" />
-                <span>Selenium</span>
-              </div>
-              <div>
-                <SiDart className="text-[28px] sm:text-[32px]" />
-                <span>Dart</span>
-              </div>
-              <div>
-                <SiFlutter className="text-[28px] sm:text-[32px]" />
-                <span>Flutter</span>
-              </div>
-              <div>
-                <FaReact className="text-[28px] sm:text-[32px]" />
-                <span>React Native</span>
-              </div>
-              <div>
-                <FaGitAlt className="text-[28px] sm:text-[32px]" />
-                <span>Git</span>
-              </div>
-              <div>
-                <SiGithubactions className="text-[28px] sm:text-[32px]" />
-                <span>Github Action</span>
-              </div>
-              <div>
-                <VscAzure className="text-[28px] sm:text-[32px]" />
-                <span>Azure Devops</span>
-              </div>
-              <div>
-                <FaAws className="text-[28px] sm:text-[32px]" />
-                <span>AWS</span>
-              </div>
-              <div>
-                <FaDocker className="text-[28px] sm:text-[32px]" />
-                <span>Docker</span>
-              </div>
-              <div>
-                <SiEnvoyproxy size={32} />
-                <span>Envoy Proxy</span>
-              </div>
-              <div>
-                <TbSql className="text-[28px] sm:text-[32px]" />
-                <span>SQL</span>
-              </div>
-              <div>
-                <SiMongodb className="text-[28px] sm:text-[32px]" />
-                <span>Mongo</span>
-              </div>
-              <div>
-                <FaMicrosoft className="text-[28px] sm:text-[32px]" />
-                <span>Office.js</span>
-              </div>
-              <div>
-                <HiOutlineDocumentDuplicate className="test-[28px] sm:text-[32px]" />
-                <span>VBA</span>
-              </div>
-              <div>
-                <FaJava className="text-[28px] sm:text-[32px]" />
-                <span>Java</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="flex flex-col mt-10 md:mt-20 w-full z-100">
-          <span className="text-white uppercase font-normal font-mono text-sm">
-            Projects
-          </span>
-          <div className="flex gap-2 flex-1 mt-4 flex-col md:flex-row">
-            <div
-              className="relative isolate overflow-hidden flex-1 rounded-xl
-                bg-linear-to-br from-white/5 to-white/10
-                border border-white/5
-                backdrop-blur-sm
-                transform-gpu will-change-transform"
-            >
-              <div className="px-4 py-4 flex flex-col relative pb-30">
-                <h3 className="text-transparent font-semibold font-inter bg-linear-to-br from-30% from-white to-white/50 bg-clip-text">
-                  MathZap
-                </h3>
-                <span className="text-xs mt-1 font-inter text-neutral-400">
-                  A simple interactive web application that lets users answer
-                  multiple-choice math questions
-                </span>
-                <div className="mt-2 flex gap-1 text-white *:rounded-full  *:px-2 *:py-0.5 *:bg-neutral-700 *:text-[10px] font-inter">
-                  <div>React</div>
-                  <div>Typescript</div>
-                  <div>Tailwind</div>
-                  <div>Vercel</div>
-                </div>
-              </div>
-              <Image
-                src="/projects/mathzap.png"
-                alt="Math Quiz"
-                width={200}
-                height={200}
-                className="object-contain absolute -bottom-15 left-1/2 -translate-x-1/2 md:-right-1 -z-1"
-              />
-            </div>
-            <div
-              className="relative isolate overflow-hidden flex-1 md:flex-2 rounded-xl
-                bg-linear-to-br from-white/5 to-white/10
-                border border-white/5
-                backdrop-blur-sm
-                transform-gpu will-change-transform"
-            >
-              <div className="px-4 py-4 flex flex-col relative pb-30">
-                <h3 className="text-transparent font-semibold font-inter bg-linear-to-br from-30% from-white to-white/50 bg-clip-text">
-                  Web Portfolio
-                </h3>
-                <span className="text-xs mt-1 font-inter text-neutral-400">
-                  A personal portfolio website showcasing projects, skills, and
-                  professional experience in a clean and modern layout.
-                </span>
-                <div className="mt-2 flex gap-1 text-white *:rounded-full  *:px-2 *:py-0.5 *:bg-neutral-700 *:text-[10px] font-inter">
-                  <div>Next</div>
-                  <div>React</div>
-                  <div>Typescript</div>
-                  <div>Tailwind</div>
-                  <div>Vercel</div>
-                </div>
-                <Image
-                  src="/projects/webportfolio.png"
-                  alt="Math Quiz"
-                  width={400}
-                  height={400}
-                  className="rounded-2xl border border-white/5 shadow-2xl shadow-white/20 absolute -z-1 -bottom-10 left-1/2 -translate-x-1/2"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex gap-2 flex-1 mt-2 flex-col md:flex-row">
-            <div
-              className="relative isolate overflow-hidden flex-1 rounded-xl
-                bg-linear-to-br from-white/5 to-white/10
-                border border-white/5
-                backdrop-blur-sm
-                transform-gpu will-change-transform "
-            >
-              <div className="px-4 py-4 flex flex-col relative pb-30">
-                <h3 className="text-transparent font-semibold font-inter bg-linear-to-br from-30% from-white to-white/50 bg-clip-text">
-                  Snap2Summon
-                </h3>
-                <span className="text-xs mt-1 font-inter text-neutral-400">
-                  An AI-powered app that extracts vehicle details from images
-                  and auto-fills digital summon forms for fast enforcement.
-                </span>
-                <div className="mt-2 flex gap-1 text-white *:rounded-full  *:px-2 *:py-0.5 *:bg-neutral-700 *:text-[10px] font-inter">
-                  <div>Flutter</div>
-                  <div>Riverpod</div>
-                  <div>FastApi</div>
-                  <div>GenAi</div>
-                  <div>Langchain</div>
-                </div>
-                <div className="absolute -z-1 -bottom-30 right-0">
-                  <Image
-                    src="/projects/snap2summon.png"
-                    alt="Math Quiz"
-                    width={400}
-                    height={400}
-                    className="object-contain rotate-20"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              className="relative isolate overflow-hidden flex-1 rounded-xl
-                bg-linear-to-br from-white/5 to-white/10
-                border border-white/5
-                backdrop-blur-sm
-                transform-gpu will-change-transform"
-            >
-              <div className="px-4 py-4 flex flex-col relative pb-30">
-                <h3 className="text-transparent font-semibold font-inter bg-linear-to-br from-30% from-white to-white/50 bg-clip-text">
-                  DineFlow
-                </h3>
-                <span className="text-xs mt-1 font-inter text-neutral-400">
-                  A complete restaurant POS solution for seamless ordering,
-                  kitchen operations, and sales analytics.
-                </span>
-                <div className="mt-2 flex gap-1 text-white *:rounded-full  *:px-2 *:py-0.5 *:bg-neutral-700 *:text-[10px] font-inter">
-                  <div>React</div>
-                  <div>Typescript</div>
-                  <div>FastApi</div>
-                </div>
-                <Image
-                  src="/projects/dineflow.png"
-                  alt="Math Quiz"
-                  width={400}
-                  height={400}
-                  className="object-contain drop-shadow-2xl absolute -z-1 -bottom-23 right-0"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+      {/* Footer */}
+      <footer className="border-t border-neutral-200 dark:border-white/[0.06] py-8 text-center text-xs text-neutral-500 font-mono transition-colors">
+        <div className="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span>© {new Date().getFullYear()} Lee Jung Yan. Built with Next.js & Motion.</span>
+          <span>Ipoh, Perak, Malaysia</span>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -28,8 +28,11 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  title: "Lee Jung Yan | Portfolio",
-  description: "Software Engineer Portfolio",
+  title: "Lee Jung Yan | Software Engineer",
+  description: "Software Engineer portfolio focused on building scalable systems, enterprise ERP, data pipelines, and full-stack solutions.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -38,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <Analytics />
       <SpeedInsights />
       <body

@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "app/portfolio-prototype/prototype.module.css"
+        ],
+        "createdAt": "2026-10-12T17:31:09.514Z",
+        "reason": "Agent reviewed: .publicationWork has a straight editorial section divider and no rounded corners; the detector associates border-radius from unrelated selectors."
+      }
+    ]
+  }
+}
